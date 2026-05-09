@@ -2,6 +2,7 @@
 #### Alexander Doppelbauer
 
 ### App starten:  
+cd dieselskandal-portal  
 docker compose up --build
 
 ### Dummy Account:
@@ -10,7 +11,7 @@ Passwort = 1234
 
 ### Frontend E2E Tests:
 cd frontend  
-npm install
+npm install  
 npx cypress open
 
 ### Backend Tests:
