@@ -1,0 +1,18 @@
+<div class="banner-top">
+  <span class="banner-title" (click)="onHome()">
+    <mat-icon>home</mat-icon>
+    Dieselskandal Portal
+  </span>
+  @if (isLoggedIn()) {
+    <button mat-icon-button class="logout-btn"
+            (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  }
+</div>
+
+<router-outlet />
+
+<div class="banner-bottom">
+  <span>© 2026 Kanzlei Dieselskandal</span>
+</div>

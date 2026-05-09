@@ -1,0 +1,61 @@
+<div class="liste-container">
+  <div class="liste-header">
+    <h2>Meine Aufträge</h2>
+    <button mat-flat-button (click)="onAnlegen()">+ Neuer Auftrag</button>
+  </div>
+
+  <dx-data-grid
+    [dataSource]="auftraege"
+    [showBorders]="true"
+    [rowAlternationEnabled]="true"
+    [columnAutoWidth]="true"
+    [wordWrapEnabled]="false">
+
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 20]"></dxo-pager>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+    <dxo-search-panel [visible]="true" placeholder="Suchen..."></dxo-search-panel>
+
+    <dxi-column dataField="hersteller" caption="Hersteller" [allowFiltering]="true"></dxi-column>
+    <dxi-column dataField="modell" caption="Modell"></dxi-column>
+    <dxi-column dataField="baujahr" caption="Baujahr" [width]="100"></dxi-column>
+    <dxi-column dataField="kennzeichen" caption="Kennzeichen"></dxi-column>
+    <dxi-column dataField="kaufpreis" caption="Kaufpreis" dataType="number"
+                format="#,##0.00"></dxi-column>
+    <dxi-column dataField="waehrung" caption="Währung">
+      <dxo-lookup [dataSource]="waehrungLookup" valueExpr="value" displayExpr="text"></dxo-lookup>
+    </dxi-column>
+    <dxi-column dataField="kaufdatum" caption="Kaufdatum" dataType="date"
+                format="dd.MM.yyyy"></dxi-column>
+    <dxi-column dataField="status" caption="Status">
+      <dxo-lookup [dataSource]="statusLookup" valueExpr="value" displayExpr="text"></dxo-lookup>
+    </dxi-column>
+    <dxi-column dataField="erstelltAm" caption="Erstellt am" dataType="date"
+                format="dd.MM.yyyy">
+    </dxi-column>
+    <dxi-column caption="Klage" [width]="100" [calculateCellValue]="getKlageText">
+      <div *dxTemplate="let cell of 'klageTemplate'" style="text-align: center; font-size: 1.1rem;">
+        {{ cell.value }}
+      </div>
+    </dxi-column>
+
+    <dxi-column dataField="klageDatum" caption="Klagedatum" dataType="date"
+                format="dd.MM.yyyy" [width]="120">
+    </dxi-column>
+
+    <dxi-column type="buttons" caption="Aktionen" [width]="75" [fixed]="true" fixedPosition="right">
+      <dxi-button
+        hint="Bearbeiten"
+        icon="edit"
+        [onClick]="onBearbeiten.bind(this)">
+      </dxi-button>
+      <dxi-button
+        hint="Löschen"
+        icon="trash"
+        [onClick]="onLoeschen.bind(this)">
+      </dxi-button>
+    </dxi-column>
+
+  </dx-data-grid>
+</div>

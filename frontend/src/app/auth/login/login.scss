@@ -1,0 +1,76 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 96px);
+}
+
+.login-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+
+  mat-card {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+
+    mat-card-content {
+      .login-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+
+        @media (max-width: 768px) {
+          grid-template-columns: 1fr;
+        }
+
+        .login-left {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          padding: 1rem;
+
+          h1 {
+            font-size: 1.8rem;
+            margin: 0;
+          }
+
+          p {
+            margin: 0;
+            color: #666;
+          }
+        }
+
+        .login-right {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          padding: 1rem;
+          margin-top: 3rem;
+
+          mat-form-field {
+            width: 100%;
+          }
+
+          .form-field-error-icon {
+            font-size: 16px;
+            height: 16px;
+            width: 16px;
+            vertical-align: middle;
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.submit-btn {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+
+  &:active {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
+  }
+}

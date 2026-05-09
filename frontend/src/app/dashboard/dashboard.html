@@ -1,0 +1,35 @@
+<div class="dashboard-container">
+  <div class="dashboard-left">
+    <mat-card class="action-card" (click)="navigateTo('/auftraege/anlegen')">
+      <mat-card-content>
+        <h2>Auftrag anlegen</h2>
+        <p>Neuen Dieselfall erfassen</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="action-card" (click)="navigateTo('/auftraege')">
+      <mat-card-content>
+        <h2>Aufträge verwalten</h2>
+        <p>Bestehende Fälle einsehen</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="dashboard-right">
+    <h3>Meine Aufträge</h3>
+    @if (auftraege.length === 0) {
+      <p class="no-data">Keine Aufträge vorhanden</p>
+    }
+    @for (auftrag of auftraege; track auftrag.id) {
+      <div class="auftrag-item">
+        <div class="auftrag-details">
+          <span class="auftrag-titel">{{ auftrag.hersteller }} {{ auftrag.modell }} {{ auftrag.baujahr }}</span>
+          <span class="auftrag-sub">{{ auftrag.kennzeichen }} · {{ auftrag.kaufpreis | number:'1.0-0' }} {{ getWaehrungText(auftrag.waehrung) }}</span>
+        </div>
+        <span class="auftrag-status status-{{auftrag.status}}">
+        {{ getStatusText(auftrag.status) }}
+      </span>
+      </div>
+    }
+  </div>
+</div>

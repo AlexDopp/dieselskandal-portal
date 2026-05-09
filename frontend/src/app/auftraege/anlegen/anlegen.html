@@ -1,0 +1,133 @@
+<div class="anlegen-container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-card appearance="outlined">
+      <mat-card-content>
+
+        <h2>{{ isBearbeiten ? 'Auftrag bearbeiten' : 'Neuen Auftrag anlegen' }}</h2>
+
+        <!-- Fahrzeugdaten -->
+        <h3 class="section-title">Fahrzeugdaten</h3>
+        <mat-divider></mat-divider>
+        <div class="form-grid">
+          <mat-form-field appearance="outline">
+            <mat-label>Hersteller</mat-label>
+            <input matInput formControlName="hersteller" />
+            @if (form.get('hersteller')?.invalid && form.get('hersteller')?.touched) {
+              <mat-error>Pflichtfeld</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Modell</mat-label>
+            <input matInput formControlName="modell" />
+            @if (form.get('modell')?.invalid && form.get('modell')?.touched) {
+              <mat-error>Pflichtfeld</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Baujahr</mat-label>
+            <input matInput type="number" formControlName="baujahr" />
+            @if (form.get('baujahr')?.invalid && form.get('baujahr')?.touched) {
+              <mat-error>Pflichtfeld</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Fahrgestellnummer</mat-label>
+            <input matInput formControlName="fahrgestellnummer" />
+            @if (form.get('fahrgestellnummer')?.invalid && form.get('fahrgestellnummer')?.touched) {
+              <mat-error>Pflichtfeld</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Kennzeichen</mat-label>
+            <input matInput formControlName="kennzeichen" />
+            @if (form.get('kennzeichen')?.invalid && form.get('kennzeichen')?.touched) {
+              <mat-error>Pflichtfeld</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Händler</mat-label>
+            <input matInput formControlName="haendler" />
+            @if (form.get('haendler')?.invalid && form.get('haendler')?.touched) {
+              <mat-error>Pflichtfeld</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <!-- Kaufinformationen -->
+        <h3 class="section-title">Kaufinformationen</h3>
+        <mat-divider></mat-divider>
+        <div class="form-grid">
+          <mat-form-field appearance="outline">
+            <mat-label>Kaufpreis</mat-label>
+            <input matInput type="number" formControlName="kaufpreis" />
+            @if (form.get('kaufpreis')?.invalid && form.get('kaufpreis')?.touched) {
+              <mat-error>Pflichtfeld</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Währung</mat-label>
+            <mat-select formControlName="waehrung">
+              <mat-option [value]="0">EUR</mat-option>
+              <mat-option [value]="1">USD</mat-option>
+              <mat-option [value]="2">GBP</mat-option>
+              <mat-option [value]="3">CHF</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Kaufdatum -->
+          <mat-form-field appearance="outline">
+            <mat-label>Kaufdatum</mat-label>
+            <input matInput type="date" formControlName="kaufdatum" />
+            @if (form.get('kaufdatum')?.invalid && form.get('kaufdatum')?.touched) {
+              <mat-error>Pflichtfeld</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <!-- Zusatzinformationen -->
+        <h3 class="section-title">Zusatzinformationen</h3>
+        <mat-divider></mat-divider>
+        <div class="form-grid checkbox-grid">
+          <mat-checkbox class="grid-pos-1" formControlName="fahrzeugInBesitz">
+            Fahrzeug noch in Besitz
+          </mat-checkbox>
+
+          <mat-checkbox class="grid-pos-2" formControlName="klageEingereicht">
+            Klage bereits eingereicht
+          </mat-checkbox>
+
+          <mat-checkbox class="grid-pos-3" formControlName="andereKanzleiBeauftragt">
+            Andere Kanzlei bereits beauftragt
+          </mat-checkbox>
+
+          <!-- Klagedatum -->
+          @if (form.get('klageEingereicht')?.value) {
+            <div class="klagedatum-wrapper grid-pos-4">
+              <mat-form-field appearance="outline">
+                <mat-label>Klage eingereicht am</mat-label>
+                <input matInput type="date" formControlName="klageDatum" />
+                @if (form.get('klageDatum')?.invalid && form.get('klageDatum')?.touched) {
+                  <mat-error>Pflichtfeld</mat-error>
+                }
+              </mat-form-field>
+            </div>
+          }
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button type="button" (click)="onAbbrechen()">Abbrechen</button>
+        <span class="spacer"></span>
+        <button mat-flat-button type="submit">
+          {{ isBearbeiten ? 'Änderungen speichern' : 'Auftrag einreichen' }}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
