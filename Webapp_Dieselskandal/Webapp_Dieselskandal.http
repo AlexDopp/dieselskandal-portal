@@ -1,0 +1,6 @@
+@Webapp_Dieselskandal_HostAddress = http://localhost:5000
+
+GET {{Webapp_Dieselskandal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

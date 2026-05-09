@@ -1,0 +1,16 @@
+# .NET
+**/bin/
+**/obj/
+
+# Node
+**/node_modules/
+**/dist/
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# Umgebungsvariablen
+**/appsettings.Development.json
