@@ -45,6 +45,6 @@ public class Auftrag
     // User
     public int UserId { get; set; }
     
-    [JsonIgnore]                    // Da Userinfos bereits aus JWT Token kommen
+    [JsonIgnore]                    // Da für Frontend die Userinfos bereits aus JWT kommen
     public User User { get; set; } = null!;
 }
