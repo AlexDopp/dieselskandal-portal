@@ -45,11 +45,16 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-// Für Testumgebung
+// Tools für Development, aktuell an
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.MapScalarApiReference();
+
+    // Migrationen automatisch anwenden
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
 }
 
 app.UseHttpsRedirection();
@@ -79,13 +84,6 @@ using (var scope = app.Services.CreateScope())
     }
 }
 */
-
-// Migrationen automatisch anwenden
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
-}
 
 app.Run();
 
