@@ -31,7 +31,7 @@ public class AuthControllerTests : IClassFixture<TestFactory>
                 Vorname = "Test",
                 Nachname = "User"
             };
-            user.PasswordHash = hasher.HashPassword(user, "Test1234!");
+            user.PasswordHash = hasher.HashPassword(user, "1234");
             context.Users.Add(user);
             context.SaveChanges();
         }
@@ -45,7 +45,7 @@ public class AuthControllerTests : IClassFixture<TestFactory>
         var response = await _client.PostAsJsonAsync("/api/auth/login", new
         {
             email = "test@test.de",
-            password = "Test1234!"
+            password = "1234"
         });
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
@@ -59,7 +59,7 @@ public class AuthControllerTests : IClassFixture<TestFactory>
         var response = await _client.PostAsJsonAsync("/api/auth/login", new
         {
             email = "test@test.de",
-            password = "643556365"
+            password = "4321"
         });
 
         Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
@@ -73,7 +73,7 @@ public class AuthControllerTests : IClassFixture<TestFactory>
         var response = await _client.PostAsJsonAsync("/api/auth/login", new
         {
             email = "nichtvorhanden@test.de",
-            password = "Test1234!"
+            password = "1234"
         });
 
         Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
