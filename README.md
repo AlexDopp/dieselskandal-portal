@@ -3,7 +3,8 @@
 
 ### App starten:  
 cd dieselskandal-portal  
-docker compose up --build
+docker compose up --build  
+localhost auf Port 4200  
 
 ### Dummy Account:
 Email = jane.doe@test.de  
@@ -15,6 +16,7 @@ Passwort = 1234
 cd frontend  
 npm install  
 npx cypress open
+=> E2E
 
 ### Backend Tests:
 #### 7 einfache Tests zu den Controllern
