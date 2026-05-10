@@ -4,7 +4,7 @@
 ### App starten:  
 cd dieselskandal-portal  
 docker compose up --build  
-localhost auf Port 4200  
+=> localhost auf Port 4200  
 
 ### Dummy Account:
 Email = jane.doe@test.de  
