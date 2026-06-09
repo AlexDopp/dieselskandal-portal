@@ -1,6 +1,15 @@
 # Webapp Projekt
 *Alexander Doppelbauer*
 
+
+### Abhängigkeiten:
+- Docker Desktop
+- Node.js
+- .NET 10 SDK
+
+
+---
+
 ### App starten:  
 cd dieselskandal-portal  
 docker compose up --build  
@@ -13,6 +22,8 @@ Passwort = 1234
 Es gibt aktuell kein vollständiges Identity-System  
 => Nur vorhandene Accounts funktionieren  
 
+---
+
 ### Frontend E2E Tests:
 #### 2 Login Tests, 1 Home Button Test 
 #### 1 Test [ Login -> Auftrag anlegen -> Auftrag in Liste finden und löschen ]
@@ -21,12 +32,9 @@ npm install
 npx cypress open
 => E2E
 
+---
+
 ### Backend Tests:
 #### 7 einfache Tests zu den Controllern
 cd Webapp_Dieselskandal.Tests  
 dotnet test
-
-#### Abhängigkeiten:
-- Docker Desktop
-- Node.js
-- .NET 10 SDK
