@@ -20,7 +20,7 @@ Email = jane.doe@test.de
 Passwort = 1234  
 
 Es gibt aktuell kein vollständiges Identity-System  
-=> Nur vorhandene Accounts funktionieren  
+Nur vorhandene Accounts funktionieren  
 
 ---
 
@@ -29,7 +29,7 @@ Es gibt aktuell kein vollständiges Identity-System
 #### 1 Test [ Login -> Auftrag anlegen -> Auftrag in Liste finden und löschen ]
 cd frontend  
 npm install  
-npx cypress open
+npx cypress open  
 => E2E
 
 ---
@@ -37,4 +37,4 @@ npx cypress open
 ### Backend Tests:
 #### 7 einfache Tests zu den Controllern
 cd Webapp_Dieselskandal.Tests  
-dotnet test
+dotnet test  
