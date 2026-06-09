@@ -8,7 +8,10 @@ docker compose up --build
 
 ### Dummy Account:
 Email = jane.doe@test.de  
-Passwort = 1234
+Passwort = 1234  
+
+Es gibt aktuell kein vollständiges Identity-System  
+=> Nur vorhandene Accounts funktionieren  
 
 ### Frontend E2E Tests:
 #### 2 Login Tests, 1 Home Button Test 
